@@ -1,0 +1,2 @@
+bundles:
+    - { name: Okvpn\Bundle\DqlFilterBundle\OkvpnDqlFilterBundle, priority: 50 }

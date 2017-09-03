@@ -1,0 +1,25 @@
+operations:
+    segment_dql_help:
+        label: About DQL
+        page_reload: false
+        button_options:
+            icon: fa-info
+        routes:
+            - oro_segment_create
+            - oro_segment_update
+        frontend_options:
+            template: OkvpnDqlFilterBundle:Segment:dqlAbout.html.twig
+            options:
+                allowMaximize: false
+                allowMinimize: false
+                dblclick: maximize
+                width: 780
+                height: 38%
+        attributes:
+            empty:
+                label: ' '
+                type: string
+        form_options:
+            attribute_fields:
+                empty:
+                    form_type: text

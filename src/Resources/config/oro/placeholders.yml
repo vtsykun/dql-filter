@@ -1,0 +1,9 @@
+placeholders:
+    placeholders:
+        segment_criteria_list:
+            items:
+                dql_condition: ~
+
+    items:
+        dql_condition:
+            template: OkvpnDqlFilterBundle:Segment:dql_condition.html.twig

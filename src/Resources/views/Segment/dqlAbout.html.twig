@@ -1,0 +1,23 @@
+{% extends 'OroActionBundle:Operation:form.html.twig' %}
+
+{% block widget_content %}
+<div class="widget-content" style="font-size: 1.3em">
+    <p> DQL stands for Doctrine Query Language that provides powerful querying capabilities over your object model.
+        For more information see <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/dql-doctrine-query-language.html">Official documentation</a>
+    </p>
+
+    <b>Examples:</b>
+    <ol>
+        <li>
+            Select entities with source "other" and gender is not null <br>
+            <pre>WHERE rootEntity.source = 'other' AND rootEntity.gender IS NOT NULL</pre>
+        </li>
+        <li>
+            Select all contacts that have the primary address with region AR-B or AR-F and gender is male <br>
+            <pre>JOIN rootEntity.addresses a WITH a.primary = true AND a.region IN ('AR-B', 'AR-F')
+WHERE rootEntity.gender = 'male'</pre>
+        </li>
+    </ol>
+    <i>Note</i> The <code>rootEntity</code> is the alias of the main entity of the segment
+</div>
+{% endblock %}

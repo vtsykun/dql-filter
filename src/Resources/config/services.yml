@@ -1,0 +1,13 @@
+services:
+    okvpn.filter.dql:
+        class: Okvpn\Bundle\DqlFilterBundle\Filter\DqlFilter
+        arguments:
+            - '@form.factory'
+            - '@oro_filter.filter_utility'
+        tags:
+            - { name: oro_filter.extension.orm_filter.filter, type: dql }
+
+    okvpn.listener.segment_condition_builder_options_listener:
+        class: Okvpn\Bundle\DqlFilterBundle\EventListener\SegmentConditionBuilderOptionsListener
+        tags:
+            - { name: kernel.event_listener, event: oro_segment.condition_builder_options_load, method: onLoad }

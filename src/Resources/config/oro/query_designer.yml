@@ -1,0 +1,6 @@
+query_designer:
+    filters:
+        dql:
+            applicable: [{type: text}]
+            type:       dql
+            query_type: [segment, report]
