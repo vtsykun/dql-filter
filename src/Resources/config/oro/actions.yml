@@ -1,12 +1,13 @@
 operations:
     segment_dql_help:
         label: About DQL
+        acl_resource: dql_filter_management
         page_reload: false
+        groups:
+            - queryDesignerEditor
         button_options:
-            icon: fa-info
-        routes:
-            - oro_segment_create
-            - oro_segment_update
+            template: OkvpnDqlFilterBundle:Segment:dqlAboutButton.html.twig
+        datagrids: [fake-dql-grid]
         frontend_options:
             template: OkvpnDqlFilterBundle:Segment:dqlAbout.html.twig
             options:
@@ -14,7 +15,7 @@ operations:
                 allowMinimize: false
                 dblclick: maximize
                 width: 780
-                height: 38%
+                height: 40%
         attributes:
             empty:
                 label: ' '

@@ -1,5 +1,7 @@
 config:
     paths:
-        'okvpndqlfilter/js/dql-condition': 'bundles/okvpndqlfilter/js/dql-condition.js'
-        'oroquerydesigner/js/condition-builder-inner': 'bundles/oroquerydesigner/js/condition-builder.js'
-        'oroquerydesigner/js/condition-builder': 'bundles/okvpndqlfilter/js/condition-builder.js'
+        'oro/filter/dql-filter': 'bundles/okvpndqlfilter/js/filter/dql-filter.js'
+        'okvpndqlfilter/js/views/dql-condition-view': 'bundles/okvpndqlfilter/js/dql-condition-view.js'
+        'okvpndqlfilter/js/views/dql-view': 'bundles/okvpndqlfilter/js/dql-view.js'
+        'oroquerydesigner/js/app/views/condition-builder/condition-builder-view': 'bundles/okvpndqlfilter/js/condition-builder/condition-builder-view.js'
+        'oroquerydesigner/js/app/views/condition-builder/condition-builder-view-inner': 'bundles/oroquerydesigner/js/app/views/condition-builder/condition-builder-view.js'

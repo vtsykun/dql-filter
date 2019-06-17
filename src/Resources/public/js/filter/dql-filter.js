@@ -11,6 +11,8 @@ define([
     /**
      * DQL filter
      *
+     * @export  oro/filter/dql-filter
+     * @class   okvpndqlfilter.filter.DQLFilter
      * @extends oro.filter.AbstractFilter
      */
     DQLFilter = AbstractFilter.extend({
@@ -79,11 +81,9 @@ define([
          *
          * @return {*}
          */
-        render: function($segmentChoice) {
-            $segmentChoice.val(this.value.value);
+        render: function() {
             return this;
         },
-
 
         /**
          * @inheritDoc

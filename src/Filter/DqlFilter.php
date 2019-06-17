@@ -2,12 +2,12 @@
 
 namespace Okvpn\Bundle\DqlFilterBundle\Filter;
 
+use Okvpn\Bundle\DqlFilterBundle\Form\Type\DQLFilterType;
 use Oro\Bundle\FilterBundle\Datasource\FilterDatasourceAdapterInterface;
 use Oro\Bundle\FilterBundle\Datasource\Orm\OrmExpressionBuilder;
 use Oro\Bundle\FilterBundle\Datasource\Orm\OrmFilterDatasourceAdapter;
 use Oro\Bundle\FilterBundle\Filter\AbstractFilter;
 use Oro\Bundle\FilterBundle\Filter\FilterUtility;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class DqlFilter extends AbstractFilter
 {
@@ -18,6 +18,7 @@ class DqlFilter extends AbstractFilter
     {
         $defaultMetadata = [
             'name'                     => $this->getName(),
+            // use filter name if label not set
             'label'                    => ucfirst($this->name),
             'choices'                  => [],
         ];
@@ -38,7 +39,7 @@ class DqlFilter extends AbstractFilter
      */
     protected function getFormType()
     {
-        return TextType::class;
+        return DQLFilterType::class;
     }
 
     /**
@@ -55,9 +56,11 @@ class DqlFilter extends AbstractFilter
         $entities = $ds->getQueryBuilder()->getRootEntities();
 
         if (isset($data['value'])) {
-            $expr = $expressionBuilder->in(
-                $this->get(FilterUtility::DATA_NAME_KEY), $this->getDQLPrefix(reset($entities)) . $data['value']
-            );
+            $uniquePrefix = substr(sha1(uniqid('', true)), 0, 8);
+            $subQuery = $this->getDQLPrefix(reset($entities)) . $data['value'];
+            $subQuery = preg_replace('/\x20rootEntity/', ' rootEntity' . $uniquePrefix, $subQuery);
+            $subQuery = preg_replace('/rootEntity\./', 'rootEntity' . $uniquePrefix . '.', $subQuery);
+            $expr = $expressionBuilder->in($this->get(FilterUtility::DATA_NAME_KEY), $subQuery);
             $this->applyFilterToClause($ds, $expr);
         }
     }

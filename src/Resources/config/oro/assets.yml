@@ -1,4 +1,3 @@
-assets:
-    css:
-        frontend:
-            - 'bundles/okvpndqlfilter/css/filter.less'
+css:
+    inputs:
+        - 'bundles/okvpndqlfilter/css/filter.scss'

@@ -1,0 +1,14 @@
+{% set linkTitle = params.frontendOptions.title|default(params.label)|trans %}
+{% set linkLabel = params.label|trans %}
+{% set isAjax = false %}
+{% set options = oro_action_frontend_options(button) %}
+
+<i class="fa-info-circle tooltip-icon"
+   title="{{ linkTitle }}"
+        {% for name,value in options.data %}
+            data-{{ name }}="{{ value is iterable ? value|json_encode : value}}"
+        {% endfor %}
+   data-operation-url="{{ options.options.url }}"
+   data-options="{{ options.options|json_encode }}"
+   data-page-component-module="oroaction/js/app/components/button-component"
+></i>

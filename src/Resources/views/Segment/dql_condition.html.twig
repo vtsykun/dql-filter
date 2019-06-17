@@ -1,8 +1,9 @@
 {% set dqlConditionOptions = {} %}
 
-<li class="option" data-criteria="condition-dql"
-    data-module="okvpndqlfilter/js/dql-condition"
-    data-widget="dqlCondition"
+<li class="option dql-filter-link" data-criteria="condition-dql"
+    data-module="okvpndqlfilter/js/views/dql-condition-view"
     data-options="{{ dqlConditionOptions|json_encode }}">
-    DQL
+    {{ 'DQL'|trans }}
+    {% set params = oro_action_widget_parameters()|merge({'group': 'queryDesignerEditor', 'datagrid': 'fake-dql-grid'}) %}
+    {% include 'OroActionBundle:Widget:_widget.html.twig' %}
 </li>

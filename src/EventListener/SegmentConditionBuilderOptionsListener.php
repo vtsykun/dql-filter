@@ -14,10 +14,8 @@ class SegmentConditionBuilderOptionsListener
         $event->setOptions(array_merge_recursive(
             $event->getOptions(),
             [
-                'onFieldsUpdate' => [
-                    'toggleCriteria' => [
-                        'condition-dql',
-                    ],
+                'fieldsRelatedCriteria' => [
+                    'condition-dql',
                 ],
             ]
         ));
